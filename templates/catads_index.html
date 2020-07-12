@@ -1,0 +1,175 @@
+
+<script src="./js/highslide.js" language="javascript" type="text/javascript"></script>
+
+<script language="javascript" type="text/javascript">AC_FL_RunContent = 0;</script>
+
+<script src="./js/AC_RunActiveContent.js" language="javascript" type="text/javascript"></script>
+
+<!-- pk need to move this into the head -->
+<!-- <link rel="stylesheet" type="text/css" href="./css/highslide.css" /> -->
+
+<script language="javascript" type="text/javascript">
+	hs.graphicsDir = './images/graphics/';
+	hs.wrapperClassName = 'wide-border';
+</script>
+
+<!-- Affichage normal -->
+<{if $show_card == 0}>
+	<!-- En-tete -->
+	<p align="center"> <strong> 
+	 <{$smarty.const._MD_CATADS_FROMSITE}>&nbsp;<{$xoops_sitename}>
+	  </strong> <br /><br />
+	  <{$total_annonces}>
+	  <{$total_confirm}>
+	</p>  
+	
+	<!-- Bloc admin if index -->
+	 <{if $moderated}>
+	    <{if $xoops_isadmin}>
+	<table class="outer" cellspacing="0">
+			  <tr>
+				<td class="head" align="center"><{$admin_block}></td>
+			  </tr>
+			  <tr>
+				<td class="odd" align="center"><{$confirm_ads}></td>
+			  </tr>
+			</table>
+	    <{/if}>
+	<{/if}>
+	
+	
+	<!-- Categories -->
+		<{include file="db:catads_cat.html"}>
+	<br />
+	<!-- Bloc latest ads and notification if index-->
+	<{if not $addads}>
+		<!-- Liste dernieres annonces -->
+		<{if $nbads > 0}>
+			<{include file="db:catads_adssublist.html"}>
+		<{/if}>
+		<br />
+		<!-- rss hack by InBox Solutions for Philippe Montalbetti -->
+		<{if $rssfeed_link != ""}>
+			<div align = "center"><{$rssfeed_link}></div>
+		<{/if}> 
+		<!-- end rss hack by InBox Solutions for Philippe Montalbetti -->
+		<!-- notification -->
+		<br />
+		<{include file='db:system_notification_select.html'}>
+		<br />
+	<{/if}>
+	
+<{else}>
+<!-- Affichage carte -->
+
+	<!-- Carte bloc droit -->
+	<table width="100%" border="0" align="center">
+		<tr>
+			<td align="center">
+			<script language="javascript" type="text/javascript">
+			if (AC_FL_RunContent == 0) {
+				alert("This page requires the file AC_RunActiveContent.js.");
+			} else {
+				AC_FL_RunContent(
+					'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+					'width', '450',
+					'height', '450',
+					'src', 'france_map_3.0?mapChemin=./',
+					'quality', 'high',
+					'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+					'align', 'middle',
+					'play', 'true',
+					'loop', 'true',
+					'scale', 'showall',
+					'wmode', 'transparent',
+					'devicefont', 'false',
+					'id', 'france_map_3.0',
+					'bgcolor', '#ffffff',
+					'name', 'france_map_3.0',
+					'menu', 'true',
+					'allowFullScreen', 'false',
+					'allowScriptAccess','sameDomain',
+					'movie', './swf/france_map_3.0?mapChemin=./',
+					'salign', ''
+					); //end AC code
+			}
+			</script>
+				<noscript>
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="450" height="450" id="france_map_3.0" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="allowFullScreen" value="false" />
+				<param name="movie" value="./swf/france_map_3.0.swf?mapChemin=./" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="./swf/france_map_3.0.swf?mapChemin=./" quality="high" bgcolor="#ffffff" width="450" height="450" name="france_map_3.0" align="middle" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
+				</noscript>
+
+			</td>
+			<td align="center">
+		<!-- Nombre d annonces en tout -->
+			<{if $afficherBlocNbAnnonces == 1}>
+				<div class="odd"><{$smarty.const._MD_CATADS_INFO_ADS}></div>	
+					<div class="number_ads_item">
+						<div style="padding-left:15px; font-size:13px; padding-top:7px">
+							<{$total_annonces}><br />
+								<!-- Bloc admin if index -->
+								 <{if $moderated}>
+									<{if $xoops_isadmin}>
+										<{$confirm_ads}>
+									<{/if}>
+								<{/if}>
+						</div>
+					</div>
+				<div class="even" align="right"></div>
+				<br />
+				
+			<{/if}>
+		<!-- Fin du nombre d annonces en tout -->
+		<!-- Affichage des dernieres annonces -->
+			<{if $afficherBlocDernieresAnnonces == 1}>
+				<div class="odd"><{$smarty.const._MD_CATADS_LASTADD}></div>
+					 <!-- Recuperer les annonces en fonction des categories -->
+					 <{foreach item=item from=$items}>
+						<div class="tutorial_recents_item">
+							<div class="tutorial_sidebar_item_title" style="padding-left:5px; font-size:13px; padding-top:5px">
+								<table width="100%" border="0">
+								  <tr>
+									<td width="20%" rowspan="4" align="left"><{$item.photo}></td>
+									<td width="80%" align="left" style="padding-left:5px"><b><{$item.type}></b> : <a href="adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a></td>
+								  </tr>
+								  <tr>
+									<td align="left" style="padding-left:5px">Prix: <{$item.price}></td>
+								  </tr>
+								  <tr>
+									<td align="left" style="padding-left:5px">Localisation: <{$item.local}></td>
+								  </tr>
+								  <tr>
+									<td align="left" style="padding-left:5px">Date: <{$item.date}> </td>
+								  </tr>
+								</table>
+							</div>
+						</div>		
+					<{/foreach}>
+				<div class="tutorial_recents_footer" align="right"></div>
+			<{/if}>		
+		<!-- Fin d affichage des dernieres annonces -->
+			</td>
+		</tr>
+	</table>
+		<!-- Categories -->
+		<{include file="db:catads_cat.html"}>
+
+	<br />
+	<!-- Bloc latest ads and notification if index -->
+	<{if not $addads}>
+		<!-- Liste dernieres annonces -->
+		<!-- rss hack by InBox Solutions for Philippe Montalbetti -->
+		<{if $rssfeed_link != ""}>
+			<div align = "center"><{$rssfeed_link}></div>
+		<{/if}>
+		<!-- end rss hack by InBox Solutions for Philippe Montalbetti -->
+		<!-- notification -->
+		<br /><br />
+		<{include file='db:system_notification_select.html'}>
+		<br />
+	<{/if}>
+		
+<{/if}>

@@ -1,0 +1,78 @@
+<{if $add_tab != 0}>
+
+<table cellspacing="1" class="outer" style="width:100%;">
+  <tr>
+    <th>
+      <{$smarty.const._MD_CATADS_FROMSITE}>&nbsp;<{$xoops_sitename}>
+    </th>
+  </tr>
+
+<!-- Display cat path and description  -->
+
+<tr><td style="padding: 10px;">
+	<{$cat_path}><br /><br />
+	<{$lang_desc}><br />
+</td></tr>
+</table>
+
+<!-- Display sub-cats  -->
+
+<{if $sous_cat <> ''}>
+	<{$sous_cat}>
+<{/if}>
+
+
+<table>
+<tr><td>
+        <{if $add_perm}>
+          <div style="margin-top:10px; text-align:right">
+          <a href="submit1.php?topic_id=<{$topic_id}>"><{$smarty.const._MD_CATADS_ADDANNONCE}></a>
+          </div>
+	<{/if}>
+    </td>
+ </tr>
+</table>
+
+<{/if}>
+
+<br />
+
+<table style="width: 100%;">
+<tr><td>
+
+<!-- If no sub-cats - display list  -->
+
+<{if $sous_cat == ''}>
+	<{include file="db:catads_adssublist.html"}>
+<{/if}>
+
+<!-- If no ads - display message  -->
+
+<{if $nbads == 0}>
+	<div align="center" style="margin-top:20px"><b><{$smarty.const._MD_CATADS_NOADSINCAT}></b></div>
+<{/if}>
+
+<!-- If no sub-cats - display navigation  -->
+
+<{if $sous_cat == ''}>
+<div align="center">
+<br />
+<{$nav_page}>
+<br />
+</div>
+<{/if}>
+
+<!-- rss hack by InBox Solutions for Philippe Montalbetti -->
+<{if $sous_cat == '' & $nbads > '0' & $search == ''}>
+  <{if $rssfeed_link != ""}>
+    <div align = "center"><{$rssfeed_link}></div>
+  <{/if}>
+<{/if}>
+<!-- end rss hack by InBox Solutions for Philippe Montalbetti -->
+
+<!-- Display notification  -->
+
+<{include file='db:system_notification_select.html'}>
+
+</td></tr>
+</table>

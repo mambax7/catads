@@ -1,0 +1,145 @@
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/modules/catads/include/calendar-blue.css" />
+
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/catads/style.css" />
+
+<script type="text/javascript" src="<{$xoops_url}>/modules/catads/include/calendar.js"></script>
+<script type="text/javascript">
+<!--
+var calendar = null;
+
+function selected(cal, date) {
+  cal.sel.value = date;
+}
+
+function closeHandler(cal) {
+  cal.hide();
+  Calendar.removeEvent(document, "mousedown", checkCalendar);
+}
+
+var MINUTE = 60*1000.
+var HOUR = 60 * MINUTE;
+var DAY = 24 * HOUR;
+var WEEK = 7 * DAY;
+
+function isDisabled(date) {
+  var today = new Date();
+  var max = new Date();
+  if (date.getTime() < (today.getTime() - DAY) ||
+  	date.getTime() > (max.getTime() + <{$nb_days_before}> * DAY ))
+	return true;
+  else
+	return false;
+}
+
+function checkCalendar(ev) {
+  var el = Calendar.is_ie ? Calendar.getElement(ev) : Calendar.getTargetElement(ev);
+  for (; el != null; el = el.parentNode)
+    if (el == calendar.element || el.tagName == "A") break;
+  if (el == null) {
+    calendar.callCloseHandler(); Calendar.stopEvent(ev);
+  }
+}
+function showCalendar(id) {
+  var el = xoopsGetElementById(id);
+  if (calendar != null) {
+    calendar.hide();
+  } else {
+    var cal = new Calendar(true, new Date(<{$jstime}>), selected, closeHandler);
+    calendar = cal;
+    cal.setRange(2000, 2015);
+	cal.setDisabledHandler(isDisabled);
+    calendar.create();
+  }
+  calendar.sel = el;
+  calendar.parseDate(el.value);
+  calendar.showAtElement(el);
+  Calendar.addEvent(document, "mousedown", checkCalendar);
+  return false;
+}
+
+Calendar._DN = new Array
+("<{$smarty.const._CAL_SUNDAY}>",
+ "<{$smarty.const._CAL_MONDAY}>",
+ "<{$smarty.const._CAL_TUESDAY}>",
+ "<{$smarty.const._CAL_WEDNESDAY}>",
+ "<{$smarty.const._CAL_THURSDAY}>",
+ "<{$smarty.const._CAL_FRIDAY}>",
+ "<{$smarty.const._CAL_SATURDAY}>",
+ "<{$smarty.const._CAL_SUNDAY}>");
+Calendar._MN = new Array
+("<{$smarty.const._CAL_JANUARY}>",
+ "<{$smarty.const._CAL_FEBRUARY}>",
+ "<{$smarty.const._CAL_MARCH}>",
+ "<{$smarty.const._CAL_APRIL}>",
+ "<{$smarty.const._CAL_MAY}>",
+ "<{$smarty.const._CAL_JUNE}>",
+ "<{$smarty.const._CAL_JULY}>",
+ "<{$smarty.const._CAL_AUGUST}>",
+ "<{$smarty.const._CAL_SEPTEMBER}>",
+ "<{$smarty.const._CAL_OCTOBER}>",
+ "<{$smarty.const._CAL_NOVEMBER}>",
+ "<{$smarty.const._CAL_DECEMBER}>");
+
+Calendar._TT = {};
+Calendar._TT["TOGGLE"] = "<{$smarty.const._CAL_TGL1STD}>";
+Calendar._TT["APREV_YEAR"] = "<{$smarty.const._CAL_PREVYR}>";
+Calendar._TT["PREV_MONTH"] = "<{$smarty.const._CAL_PREVMNTH}>";
+Calendar._TT["GO_TODAY"] = "<{$smarty.const._CAL_GOTODAY}>";
+Calendar._TT["NEXT_MONTH"] = "<{$smarty.const._CAL_NXTMNTH}>";
+Calendar._TT["NEXT_YEAR"] = "<{$smarty.const._CAL_NEXTYR}>";
+Calendar._TT["SEL_DATE"] = "<{$smarty.const._CAL_SELDATE}>";
+Calendar._TT["DRAG_TO_MOVE"] = "<{$smarty.const._CAL_DRAGMOVE}>";
+Calendar._TT["PART_TODAY"] = "<{$smarty.const._CAL_TODAY}>";
+Calendar._TT["MON_FIRST"] = "<{$smarty.const._CAL_DISPM1ST}>";
+Calendar._TT["SUN_FIRST"] = "<{$smarty.const._CAL_DISPS1ST}>";
+Calendar._TT["CLOSE"] = "<{$smarty.const._CLOSE}>";
+Calendar._TT["TODAY"] = "<{$smarty.const._CAL_TODAY}>";
+
+// date formats
+Calendar._TT["DEF_DATE_FORMAT"] = "y-mm-dd";
+Calendar._TT["TT_DATE_FORMAT"] = "y-mm-dd";
+
+Calendar._TT["WK"] = "";
+//-->
+</script>
+
+<{$adsform.javascript}>
+
+<div align="center"><font color="#FF0000"><strong><{$msgstop}></strong> </font></div>
+<{if $preview and not $msgstop}>
+	<{include file="db:catads_item.html"}>
+<{/if}>
+
+<form name="<{$adsform.name}>" action="<{$adsform.action}>" method="<{$adsform.method}>" <{$adsform.extra}>>
+  <table class="annoncesCategoriesContourDiv" cellspacing="1">
+    <tr>
+    <th colspan="2"><{$adsform.title}></th>
+    </tr>
+	
+    <!-- start of form elements loop -->
+    <{foreach item=element from=$adsform.elements}>
+	
+	<{if $element.name|truncate:6:"" != "_break"}>
+      <{if $element.hidden != true}>
+      <tr>
+        <td class="head"><{$element.caption}></td>
+        <td class="<{cycle values="even,odd"}>"><{$element.body}></td>
+      </tr>
+      <{else}>
+      <{$element.body}>
+      <{/if}>
+	  
+      <{else}>
+    <th colspan="2"><{$element.caption}></th>  
+      <{/if}>
+	  
+    <{/foreach}>
+	
+    <!-- end of form elements loop -->
+	<{$adsform.elements.uid.body}>
+	<{$adsform.elements.display_price.body}>
+	<{$adsform.elements.preview_name.body}>
+	<{$adsform.elements.count_elt.body}>
+    <!-- end of form elements loop -->
+  </table>
+</form>

@@ -1,0 +1,12 @@
+RewriteEngine on
+
+RewriteRule ^Petites_annonces/([a-z]+)([0-9]+)(-(.+))?  modules/catads/seo.php?seoOp=$1&seoArg=$2&seoOther=$4&%{QUERY_STRING} [L]
+RewriteRule ^Petites_annonces(/)?  modules/catads/?%{QUERY_STRING} [L]
+
+
+
+
+
+
+
+

@@ -1,0 +1,248 @@
+* Changelog
+
+1.53.5 RC3 10/06/2010 | Updated by Peekay
+
+Changes:
+
+- Firefox Ad Blocker Plus warning added to release notes (thx madDan).
+- Corrected description in prefs for default email and admin renewal period.
+
+Bugfixes:
+
+- Template cloning generated Smarty error (French character issue).
+- Email notification failed if notification options were hidden.
+- Email renewal did not respect allowed renewal count.
+- Allowed renewal count was not decremented after email renewal.
+- Currency and price options were missing from admin edit form.
+- Ad preview did not incorporate style CSS.
+
+Notes:
+
+If you wish to notify users by email that their ad is due to expire, you must enable the block called 'Send an email if the ad is due to expire'. This does not display on the site, but it is required.
+
+
+1.53.4 RC2 12/05/2010 | Updated by Peekay
+
+Changes:
+
+- Search form menus now show sub-categories correctly.
+- Admin ad-listing now shows user-selected currency.
+- Main and category page templates and CSS updated.
+
+1.53.3 RC1 10/05/2010 | Updated by Peekay
+
+Changes:
+
+- RSS now hides ads in categories which disallow anonymous viewing.
+- Meta description tag and keywords are generated dynamically.
+- Admin ad-listing now shows the latest ads first by default.
+
+Bugfixes:
+
+- Blocks did not respect category permissions.
+- Xoops User-Profile listing of ads did not respect category permissions. 
+- Icon for suspended-ads was missing from admin ad-management screen.
+- Import.php failed to check for Classifieds module installation resulting in potential data loss.
+- Title character-length option in blocks did not work.
+- Admin blocks displayed incorrectly in IE7.
+- The Javascript intended to require keyword entry in the search form did not work.
+
+1.53.2 Beta 26/04/2010 | Updated by Peekay
+
+Changes:
+
+- Search results pagination function updated to be PHP 5 compatible.
+- Notify on publication language change.
+
+Bugfixes:
+
+- Anonymous comment posting failed using PHP 5.
+- Notify on publication option didn't work.
+
+Notes:
+
+The words 'by email' were removed from the 'Notify me when published' language definition because the notification is only sent by email if the user chooses email as their method for Xoops notifications. Otherwise it is sent by PM.
+
+
+1.53.1 Beta 20/04/2010 | Updated by Peekay
+
+Changes:
+
+- Search now checks for a number in the price-search field.
+
+Bugfixes:
+
+- Search results did not paginate.
+
+Language Packs (download from the project page):
+
+- Arabic translation by Mariane.
+- Chinese translation by Hunnuh.
+- French translation by Tatane.
+
+1.53 Beta 01/04/2010 | Updated by Peekay | Based on Catads 1.522 FINAL (Sourceforge)
+
+Changes:
+
+- Option added to allow custom tags.
+- Option added to hide notification options (so renewal notice can be sent by email always).
+- Option added to hide video field.
+- Option added to restrict publication date to today's date.
+- Option added to hide 'For Sale' etc. (so module can be used as a directory)
+- Clicking a tag now includes tags in search.
+- Keyword search now includes tags.
+- Search allows partial match on post code.
+- Users can search for a keyword in 'category', 'region', 'country' or 'town'.
+- Sub-category 'no-image' option added.
+- Default installation now uses 'regions' table for world regions menu (customisable).
+- Default installation now uses 'departements' table for world countries menu (customisable).
+- Click-to-enlarge image size can now be set in admin.
+- English language files updated.
+- Some field lengths changed.
+- Template now uses theme CSS instead of custom CSS.
+- Module is 99% W3C valid for anonymous users.
+- Blocks are W3C valid, except scrolling ads block which uses the 'marquee' tag.
+- French map is no longer operational by default and will require manual menu changes.
+- (French map files and admin pref have been retained for legacy).
+
+Bugfixes:
+
+- RSS feed did not respect expired, waiting, unpublished or suspended ads.
+- Keyword search did not respect expired, waiting, unpublished or suspended ads.
+- Search failed to limit results to specified parameters (category, region, town etc.)
+- Images did not preview.
+- Email and PM icons did not preview.
+- Region and department names did not preview.
+- Tags did not preview.
+- User notification choice was lost on preview.
+- Notify on publication choice was lost on preview.
+- Selecting 'email' set 'PM' as method.
+- Incorrect moderation message was displayed if moderation disabled.
+- Admin blocks displayed incorrectly in Firefox.
+- Admin 'view category description' option duplicated.
+- Invalid ID in pop-box script.
+- Invalid Highslide CSS (loaded in body).
+- Invalid Flash embed code.
+- Invalid 'no-image' ID.
+- Broken image icon in sub-categories if no image chosen.
+
+
+1.52 Final 28/07/2009 Merci à Nikita et Tatane et merci a Mariane pour la traduction en anglais et en arabe
+
+TDM Xoops | http://www.tdmxoops.net | webmaster@tdmxoops.net
+
+- Modification du script pour le zoom des vignettes
+- Les annonces expirees ne sont plus affichees dans la carte
+- Rajout du bloc "Recherche"
+- Rajout d'une video dans les annonces
+- Possibilite d'afficher les descriptions des categories
+- Les sous-categories sont affichees dans la categorie principale
+- Rajout des tags
+- Possibilite d'activer le SEO
+
+1.51 Beta 19/3/2009 Merci à Tatane pour les tests
+02/01/2009 :
+- Bug avec les notifications ( Quand l'utilisateur demandait d'etre prevenu lors la parution de son email, aucun email etait envoye ).
+- Modification de l'edition des annonces lorsqu'il y a la moderation ( Quand le membre voulait editer son annonce pour supprimer ou editer ses images, il ne pouvait pas ).
+- Bug avec la creation de la vignette qui ne correspondait & l'image de survol si il y avait plus de 2 images.
+- Bug lors de la creation de la table regions et departements en fonction de certaines bases de donnees.
+- Bug si l'utilisateur ne choisit pas de mettre les regions ou les departements en champs obligatoire, les annonces ne s'affichent pas sur la carte.
+- Rajout dans l'edition d'annonce dans l'administration, les champs "Departement" et "Region".
+- Captcha "Formulaire contact" par Eparcyl.
+- UTF-8 pour les fichiers de langues par Kris.
+- Affichage des menus deroulants au-dessus de la carte de France
+- Petits bugs par si par l&
+19/01/2009 :
+- La page "notifications.php" plante & cause du module
+- Quand l'utilisateur edite son annonce et la moderation est active. Un email est envoye & l'administrateur pour le prevenir et l'annonce est mise en attente.
+- Quand le membre edite son annonce, il peut choisir d'etre prevenu de la publication de son annonce.
+- Dans la partie administrateur, rajout de champs dans l'edition d'une annonce (prix, telephone, regions, departement, titre)
+- Rajout d'une icone "membre prevenu de l'expiration de son annonce" dans l'administration.
+21/01/2009 :
+- Ajout d'un champ dans les preferences pour inserer des pubs adsences ou des bannieres par exemple en bas de vos annonces.
+- Dans la partie administrateur, rajout de champs dans l'edition d'une annonce (ajout de photo, suppression de photo)
+- Possibilite de ne pas afficher certaines sous-categories dans la page d'accueil du module
+26/01/2009 :
+- Importation des annonces du module Classifields vers Catads
+02/02/2009 :
+- Rajout d'une option dans l'edition du bloc " Dernieres annonces " pour accelerer ou ralentir la vitesse de defilement.
+24/02/2009 :
+- Modification de la case "ville", on pouvait pas mettre plus de 22 caracteres.
+- Les annonces qui ont ete editees ne recoivent plus de notifications d'annonce & echeance.
+
+V1.50 26/11/08 (Kraven30) Merci à Eparcyl92 et Tatane pour les tests
+//Administration
+- Modification par lot des statuts des annonces.
+- Suppression des annonces par utilisateur.
+- Rajout d'une fonction renouveler annonce.
+- Rajout d'une fonction approche de l'expiration.
+- Creation d'un bloc "Envoi d'email lors de l'approche de l'expiration".
+- Ajout des permissions d'acces des catégories et de soumissions d'annonces dans les catégories.
+- Réorganisation de l'administration.
+- Déplacement des images dans le dossier uploads à la racine du site
+- Création de vignettes
+
+//Utilisateur
+- Trie par ordre croissant ou décroissant des annonces.
+- Modification du formulaire pour choisir de recevoir l'email d'expiration ou pas.
+- Amélioration de l'interface des listes des annonces.
+- Amélioration de l'interface de l'annonce.
+- Système d'agradissement des images des annonces ajax "Popbox"
+- Survol des images - Bug d'affichage imprimante, rajout d'une photo.
+- L'utilisateur peur renouveler son annonce quand il l'a recoit par email ou par mp.
+- Bug: le nombre de lecture de l'annonce ne s'incremente plus apres le nombre 127.
+- Bug: Problème d'affichage des categories.
+- Affichage d'une carte de France
+- Ajout d'un système de recherche
+
+V1.41(Philippe Montalbetti)
+- Rajout du système RSS.
+
+V1.40 17/07/05 (C. Felix AKA the Cat)
+- Possibilité d'upload de plusieurs photos (jusqu'à 6).
+- Nombre de photos paramétrable par rubrique.
+- Modification administration.
+- Possibilité de modifier une annonce par son auteur (si non modéré).
+- Possibilité de supprimer une annonce par son auteur.
+- Possibilité d'affichage du pseudo de l'auteur et lien vers sa liste d'annonces.
+- Script de mise à jour de la Bdd dans l'administration
+- Champs code postal et email paramétrables (non demandé, facultatif, requis).
+- Diverses modifications pour compatibilité Php5 et Xoops 2.2
+
+V1.3 20/02/05 (C. Felix AKA the Cat)
+- Ajout choix date de publication
+- Ajout choix durée publication (liste paramétrable dans l'admin)
+- Modification template formulaire
+- Modification par l'admin des dates de publication et expiration
+
+V1.21 31/10/04 (C. Felix AKA the Cat)
+- Ajout fonction d'impression
+- Modification ajout d'annonce (utilisation même template que l'index)
+- Ajout contrôle longueur texte
+
+V1.2 07/10/04 (C. Felix AKA the Cat)
+- Création bloc ajout d'annonce (accès par liste déroulante)
+- Option de présentation page index (rubriques en lignes ou colonnes)
+- Ajout du sous-menu Soumettre une annonce
+- Effacement du cache des blocs lors de soumission/approbation/effacement annonce (idem pour rubriques)
+- Ajout anglais + espagnol
+- fix bug template bloc new, et preview formulaire contact
+- Ajout insertion des options en fonction de la langue à l'installation
+
+V1.1 29/09/04 (C. Felix AKA the Cat)
+- prévisualisation de l'annonce telle qu'elle paraitra (utilisation du même template) et avec la photo (si photo soumise !)
+- accès direct aux rubriques : liste déroulante dans bloc des dernières annonces
+- Affichage de toutes les annonces des sous-rubriques lorsque l'on sélectionne une rubrique intermédiaire.
+- modification du titre des pages pour amélioration référencement
+- Ajout du sous-menu Mes annonces
+- correction bugs mineurs
+
+V1.0 (C. Felix AKA the Cat)
+- fix bug upload image (redirection, ajout maxi dans formulaire, message d'erreur)
+- fix page blanche commentaires
+- fix bug taille fenêtre photo. Fichier modifié : include/functions.php
+- ajout affichage complet rubrique dans admin
+- ajout affichage rubrique dans 'Ajouter une annonce...'
+- notification(admin/index.php): effacement notifications + commentaires si effacement annonce. Correction "Notification de la publication" si modération
+- ajout affichage adresse IP + liste des annonces d'un membre (adsitem.php, catads_adsitem.html, adsuserlist.php, language/../main.php, images/ip.gig et who.gif)
+Merci donc & tous... 

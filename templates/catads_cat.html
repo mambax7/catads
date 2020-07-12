@@ -1,0 +1,88 @@
+	<!-- Categories -->
+		<!-- Display title if submit an ad -->
+		<{if $addads}>
+			<table class="outer" cellspacing="0" >
+				<tr>
+					<td class="head" align="center">
+						<{$smarty.const._MD_CATADS_SELCAT1}>
+						<{if $cat_path}>
+							<{$smarty.const._MD_CATADS_IN}><{$cat_path}>
+						<{/if}>
+						<{$smarty.const._MD_CATADS_SELCAT2}>
+					</td>
+				</tr>
+			</table> 
+		<{/if}><br />
+		
+		
+		<{if $tpltype == 1}>
+		<!-- Affichage en lignes -->
+		<table border="0" >
+			<tr> 
+				<{foreach item = cat from = $categories}>
+					<td class="annoncesCategoriesContourDiv" align="center" width="20%">
+						<b>
+						<{if $cat.link}>
+							<a href="<{$xoops_url}>/modules/catads/adslist.php?topic_id=<{$cat.id}>"><{$cat.title}></a>
+							<{$cat.nb}>
+							<{if $cat.new > 0}>
+								<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+							<{/if}>
+						<{elseif $cat.submit}>
+							<a href="<{$cat.submit}>"><{$cat.title}></a>
+							<{$cat.nb}>
+							<{if $cat.new > 0}>
+							<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+							<{/if}>
+						<{else}>
+							<{$cat.title}>
+						<{/if}>
+						</b>
+						<br /><br />
+						<{$cat.image}>
+						<br />
+					</td>
+					<td class="annoncesCategoriesSub" >
+						<{include file="db:catads_subcat.html" type = $tpltype}> 
+					</td>
+			</tr>
+				<{/foreach}>
+		</table>
+		
+		<{else}>
+		<!-- Affichage en colonnes -->
+			<table border="0">
+				<tr>
+				  <td class="head" align="center"  colspan="<{$nb_col_or_row}>"><{$smarty.const._MD_CATADS_CAT}></td>
+			 	</tr>
+			 	      <tr>
+                                           <{foreach item = cat from = $categories}>
+							<td class="annoncesCategoriesContourDiv" align="center" width="20%">
+								<div class="annoncesCategoriesContourImg"><{$cat.image}></div>
+								<div class="annoncesCategoriesTitre">
+								<{if $cat.link}>
+									<a href="<{$xoops_url}>/modules/catads/adslist.php?topic_id=<{$cat.id}>"><{$cat.title}></a>
+									<{$cat.nb}>
+									<{if $cat.new > 0}>
+									<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+									<{/if}>
+								<{elseif $cat.submit}>
+									<a href="<{$cat.submit}>"><{$cat.title}></a>
+									<{$cat.nb}>
+									<{if $cat.new > 0}>
+									<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+									<{/if}>
+								<{else}>
+									<{$cat.title}>
+								<{/if}>
+								</div>
+								<br />
+								<div class="annoncesCategoriesSub"><{include file="db:catads_subcat.html" type = $tpltype}></div>
+                                                          </td>
+					         <{if $cat.newline}>
+                                            </tr>
+				    <{else}><{/if}>
+                            <{/foreach}>
+                            
+                     </table>
+		<{/if}>

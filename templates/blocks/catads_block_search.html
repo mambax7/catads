@@ -1,0 +1,38 @@
+<!-- Hack Kraven30 -->
+<!-- pk this works now -->
+<script language="javascript" type="text/javascript">
+function xoopsFormValidate_search_block() {
+var myform = document.forms.search ;
+if(myform.words.value == "") {
+alert("Please enter a Keyword");
+myform.words.focus();
+return false;
+}
+if(myform.submit.value == "") {
+window.alert("Please press submit");
+myform.submit.focus();
+return false;
+}
+return true;
+}
+</script>
+
+<div style="width: 300px">
+<form name="search" id="search" action="<{xoAppUrl /}>modules/catads/adslist.php?search=1" method="post" onsubmit="javascript:return xoopsFormValidate_search_block();">
+
+<table class="outer" border="0">
+<tr><td align="left" class="odd"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_WORDS}></div><{$block.words}></td></tr>
+<tr><td align="left" class="even"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_CAT}></div><{$block.category}></td></tr>
+<tr><td align="left" class="odd">
+<div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_PRICE}></div><div style="float:left"><{$block.price_start}></div>
+<div style="float:left">&nbsp;<{$smarty.const._MB_CATADS_SEARCH_A}>&nbsp;</div><div style="float:left"><{$block.price_end}></div></td></tr>
+<tr><td align="left" class="even"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_REGION}></div><{$block.region}></td></tr>
+<tr><td align="left" class="odd"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_DEPARTEMENT}></div><{$block.departement}></td></tr>
+<tr><td align="left" class="even"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_TOWN}></div><{$block.town}></td></tr>
+<tr><td align="left" class="odd"><div style="float:left; width:70px"><{$smarty.const._MB_CATADS_SEARCH_CODEPOST}></div><{$block.post_code}></td></tr>
+<tr><td align="right" class="even"><{$block.submit}></td></tr>
+
+</table>
+
+</form>
+</div>

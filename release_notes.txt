@@ -1,0 +1,55 @@
+Catads 1.53.5 RC3
+
+
+Catads 1.53 is based on Catads 1.522 FINAL from TDM Xoops (France) with some issues resolved and some new features added.
+
+This RC3 fixes a couple of problems affecting email notifications. Some foreign characters were also removed from a template that caused a Smarty error when cloning the template set. 
+
+Release Notes:
+
+* The default installation creates world region and country menus instead of the French regional data of Catads 1.52. At present, to customise these menus to suit your locale you will need to edit the database tables directly. It's not hard to do, but please make a backup first.
+
+* If you wish to notify users by email that their ad is due to expire, you must enable the block called 'Send an email if the ad is due to expire'. This does not display on the site, but it is required.
+
+* The Firefox Plugin 'Ad Blocker Plus' may cause this module to work incorrectly. Some Ad Blocker Plus filters block the word 'ad' which, not surprisingly, appears quite a lot in Catads. Please ensure this plugin is disabled before submitting any bug reports. (thx MadDan)
+
+* I have decided to leave the original URL re-write files in place in this RC (again) just in case someone wants to debug it. However, it does not work, I don't know how to make it work, so please don't ask me why it doesn't work! 
+
+
+This is still an RC so please continue to report issues on the project page on dev.xoops.org, or in the Xoops.org forum. 
+
+
+New (compared to Catads 1.52):
+
+* Custom tags option.
+* Tags are now included in search.
+* Tag search now includes other tags.
+* Partial postcode search supported.
+* Restrict keyword search by category, town, region etc.
+* Search respects expired, suspended and waiting ads and category permissions.
+* RSS repects expired suspended and waiting ads and excludes ads in private categories.
+* Blocks repect expired suspended and waiting ads and category permissions.
+* Show-hide "For Sale" option.
+* Show-hide video-field option.
+* Restrict publication date option.
+* No-image option for sub-categories.
+* New world region and country menus.
+* Click-enlarge image size set in admin.
+* Ad template now uses theme CSS.
+* Module 99% W3C valid for anon users.
+* Blocks W3C valid, except scrolling ads.
+* Dynamic generation of meta description and keyword tags.
+* CSS control of list elements and roll-over colours.
+
+
+
+See changelog for bug-fixes. 
+
+Download from the 'Files' page at:
+
+http://dev.xoops.org/modules/xfmod/project/?cat_ads_153
+
+
+
+Peekay.
+

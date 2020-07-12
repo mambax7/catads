@@ -1,0 +1,109 @@
+<script src="<{$xoops_url}>/modules/catads/js/highslide.js" language="javascript" type="text/javascript"></script>
+
+<script src="<{$xoops_url}>/js/AC_RunActiveContent.js" language="javascript" type="text/javascript"></script>
+
+<script language="javascript" type="text/javascript">AC_FL_RunContent = 0;</script>
+
+<!-- pk need to move this into the head -->
+<!-- <link rel="stylesheet" type="text/css" href="./modules/catads/css/highslide.css" /> -->
+
+<!-- pk added xoops url to enable block to work anywhere in the site -->
+<script language="javascript" type="text/javascript">
+	hs.graphicsDir = '<{$xoops_url}>/modules/catads/images/graphics/';
+	hs.wrapperClassName = 'wide-border';
+</script>
+
+<{if $block.noads}>
+	<{$smarty.const._MB_CATADS_NOADS}>
+<{elseif $block.full_view}>
+
+	<{if $block.defil}>
+		<marquee behavior="scroll" direction="up" width="100%"height="100" scrollamount="1" scrolldelay="<{$block.vitesse_defil}>" onmouseover="this.stop()" onmouseout="this.start()">
+		<table cellspacing="1" class="outer" style="width:100%;">
+		  <tr>
+			<td style="padding: 0;">
+			  <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+				<{foreach item=item from=$block.items}> 
+				<tr><{if $xoops_isadmin}>
+				  <td><a href="<{$xoops_url}>/modules/catads/admin/adsmod.php?op=edit&amp;ads_id=<{$item.id}>"> <img src="<{$xoops_url}>/modules/catads/images/icon/edit_mini.gif" border="0" alt="<{$smarty.const._MB_CATADS_EDITADS}>" /></a>
+				  </td>
+				  <{/if}> 
+				  <td width="40px" align="center" style="padding-top:3px; font-size:13px; padding-bottom:3px"><{$item.thumb}><div class="bulle"></div></td>
+				  <td align="left" class="even">
+                                  <{if $block.show_ad_type == 1}>
+                                  <b><{$item.type}>: </b><{/if}> <a href="<{$xoops_url}>/modules/catads/adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a>
+				  </td>
+				  <td align="center" class="odd"><{$item.price}></td>
+				  <td align="center" class="even"><{$item.date}></td>
+				  <td align="center" class="odd"><{$item.local|capitalize}></td>
+				</tr>
+				<{/foreach}> </table>
+			</td>
+		  </tr>
+		</table>
+		</marquee>
+	<{else}>
+		<table cellspacing="1" class="outer" style="width:100%;">
+		  <tr>
+			<td style="padding:0;">
+			  <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+				<tr align="center" class="head"> 
+				  <{if $xoops_isadmin}><td class="head"></td><{/if}> 
+				  <td class="head"></td>
+				  <td class="head"><strong><{$smarty.const._MB_CATADS_TITLEADS}></strong></td>
+				  <td class="head"><strong><{$smarty.const._MB_CATADS_PRICE}></strong></td>
+				  <td class="head"><strong><{$smarty.const._MB_CATADS_DATE1}></strong></td>
+				  <td class="head"><strong><{$smarty.const._MB_CATADS_LOCAL}></strong></td>
+				  
+				</tr>
+				<{foreach item=item from=$block.items}> 
+				<tr align="center" class="odd"> <{if $xoops_isadmin}> 
+				  <td> <a href="<{$xoops_url}>/modules/catads/admin/adsmod.php?op=edit&amp;ads_id=<{$item.id}>"> <img src="<{$xoops_url}>/modules/catads/images/icon/edit_mini.gif" border="0" alt="<{$smarty.const._MB_CATADS_EDITADS}>" /></a>
+				  </td>
+				  <{/if}>
+				  <td width="40" align="center" style="padding-top:3px; font-size:13px; padding-bottom:3px"><{$item.thumb}><div class="bulle"></div></td>
+				  <td align="left" class="even">
+                                  <{if $block.show_ad_type == 1}>
+                                  <b><{$item.type}>: </b><{/if}> <a href="<{$xoops_url}>/modules/catads/adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a>
+				  </td>
+				  <td align="center" class="odd"><{$item.price}></td>
+				  <td align="center" class="even"><{$item.date}></td>
+				  <td align="center" class="odd"><{$item.local|capitalize}></td>
+				  
+				</tr>
+				<{/foreach}> </table>
+			</td>
+		  </tr>
+		</table>
+	<{/if}>
+
+<{else}>
+
+	<{if $block.defil}>
+		<ul>
+		<marquee behavior="scroll" direction="up" width="100%"height="100" scrollamount="1" scrolldelay="<{$block.vitesse_defil}>" onmouseover="this.stop()" onmouseout="this.start()">
+		
+		<{foreach item=item from=$block.items}>
+			 <li>
+                         <{if $block.show_ad_type == 1}>
+                         <b><{$item.type}>: </b><{/if}>
+			 <a href="<{$xoops_url}>/modules/catads/adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a>
+			 </li>
+		<{/foreach}>
+			</marquee>
+			
+		</ul>
+	<{else}>
+		<ul>
+		
+		<{foreach item=item from=$block.items}>
+			 <li>
+                         <{if $block.show_ad_type == 1}>
+                         <b><{$item.type}>: </b><{/if}>
+			 <a href="<{$xoops_url}>/modules/catads/adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a>
+			 </li>
+		<{/foreach}>
+		
+		</ul>
+	<{/if}>
+<{/if}>

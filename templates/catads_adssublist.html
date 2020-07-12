@@ -1,0 +1,86 @@
+<script src="./js/highslide.js" language="javascript" type="text/javascript"></script>
+
+<!-- pk need to move this into the head -->
+<!-- <link rel="stylesheet" type="text/css" href="./css/highslide.css" /> -->
+
+<script language="javascript" type="text/javascript">
+	hs.graphicsDir = './images/graphics/';
+	hs.wrapperClassName = 'wide-border';
+</script>
+
+<table cellspacing="1" class="annoncesTableau" style="width:100%;">
+  <tr>
+    <th><{$lang_title}></th>
+  </tr>
+  <tr>
+    <td style="padding:0;">
+   	  <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+        <tr class="head">
+		  <{if $xoops_isadmin or $isauthor}>
+		  	<td class="head"></td>
+		  <{/if}>
+		  <td align="center" class="head"></td>	
+          <td class="head" width="35%"><{$smarty.const._MD_CATADS_TITLE}> 
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_titre=ASC">
+			<img src="images/icon/ascinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_TITLE_ASC}>" title="<{$smarty.const._MD_CATADS_TITLE_ASC}>"/></a>  
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_titre=DESC">
+			<img src="images/icon/descinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_TITLE_DESC}>" title="<{$smarty.const._MD_CATADS_TITLE_DESC}>"/></a></td>
+			
+          <td align="center" valign="middle" class="head"><{$smarty.const._MD_CATADS_PRICE}> 
+		  	<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_prix=ASC">
+			<img src="images/icon/ascinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_PRICE_ASC}>" title="<{$smarty.const._MD_CATADS_PRICE_ASC}>"/></a>  
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_prix=DESC">
+			<img src="images/icon/descinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_PRICE_DESC}>" title="<{$smarty.const._MD_CATADS_PRICE_DESC}>"/></a></td>
+			
+	<td align="center" class="head"><{$smarty.const._MD_CATADS_OPTION_PRICE}> 
+		  	<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_option_prix=ASC">
+			<img src="images/icon/ascinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_OPTION_PRICE_ASC}>" title="<{$smarty.const._MD_CATADS_OPTION_PRICE_ASC}>"/></a>  
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_option_prix=DESC">
+			<img src="images/icon/descinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_OPTION_PRICE_DESC}>" title="<{$smarty.const._MD_CATADS_OPTION_PRICE_DESC}>"/></a></td>
+			
+	<td class="head" align="center"><{$smarty.const._MD_CATADS_LOCAL2}> 
+		  	<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_localisation=ASC">
+			<img src="images/icon/ascinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_LOCAL_ASC}>" title="<{$smarty.const._MD_CATADS_LOCAL_ASC}>"/></a>  
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_localisation=DESC">
+			<img src="images/icon/descinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_LOCAL_DESC}>" title="<{$smarty.const._MD_CATADS_LOCAL_DESC}>"/></a></td>
+			
+        <td align="center" class="head"><{$smarty.const._MD_CATADS_DATE}> 
+		  	<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_date=ASC">
+			<img src="images/icon/ascinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_DATE_ASC}>" title="<{$smarty.const._MD_CATADS_DATE_ASC}>"/></a>  
+			<a href="?<{if $topic_id != ''}>topic_id=<{$topic_id}>&amp;<{else}><{$topic_id}><{/if}><{if $uid != ''}>uid=<{$uid}>&amp;<{else}><{$uid}><{/if}><{if $search != ''}>search=<{$search}>&amp;<{else}><{$search}><{/if}>affichage_date=DESC">
+			<img src="images/icon/descinfo.gif" border="0" alt="<{$smarty.const._MD_CATADS_DATE_DESC}>" title="<{$smarty.const._MD_CATADS_DATE_DESC}>"/></a></td>
+          
+          <!-- <td align="center" class="head"><{$smarty.const._MD_CATADS_VIEW}></td> -->
+        </tr><tr><td>&nbsp;</td></tr>
+        <{foreach item=item from=$items}>
+		<!-- <tr align="center" onmouseover="this.style.backgroundColor='LemonChiffon';" onmouseout="this.style.backgroundColor='white';"> -->
+		<tr align="center" class="pk_list_entry" onmouseover="this.className='pk_rollover';" onmouseout="this.className='pk_rollout';">
+		  <{if $isauthor}>
+		    <td align="center">
+			<{$item.status}>
+		  </td>
+		  <{elseif $xoops_isadmin}>
+		    <td align="center" style="padding-top:15px; padding-bottom:15px;">
+			<a href="admin/adsmod.php?op=edit&amp;ads_id=<{$item.id}>">
+			<img src="images/icon/edit_mini.gif" border="0" alt="<{$smarty.const._MD_CATADS_EDITADS}>" /></a>
+		  </td>
+		  <{/if}>
+		  <td><{$item.photo}><!-- <div id="idDivImage"><img id="idImage" class="vignette"></div> --></td>
+          <td align="left" style="padding-top:1px; padding-bottom:0px; padding-left:5px;"> 
+            
+            <{if $show_ad_type == 1}><div class="pk_ad_type" style="float:left"><{$item.type}>:&nbsp;</div><{/if}>
+            <div class="annoncesTitre"><a href="<{$xoops_url}>/modules/catads/adsitem.php?ads_id=<{$item.id}>"><{$item.title}></a></div>
+            <div class="annoncesDescription"><{$item.desc}></div></td>
+            <td class="pk_item_price"><{$item.price}></td>
+	    <td  class="pk_item_price_option"><{$item.price_option}></td>
+	    <!-- pk to kill postal code you need to edit PHP function -->
+            <td class="pk_item_location"><{$item.local|capitalize}></td>
+	    <td class="pk_item_posted"><{$item.date}></td>
+          
+		  <!-- <td align="center"><{$item.views}></td> -->
+        </tr>
+		<{/foreach}>
+      </table>
+	</td>
+  </tr>
+</table>

@@ -1,0 +1,40 @@
+<{$adsform.javascript}>
+
+<div align="center"><font color="#FF0000"><strong><{$msgstop}></strong> </font></div>
+<{if $preview and not $msgstop}>
+	<{include file="db:catads_item.html"}>
+<{/if}>
+
+<form name="<{$adsform.name}>" action="<{$adsform.action}>" method="<{$adsform.method}>" <{$adsform.extra}>>
+  <table class="outer" cellspacing="1">
+    <tr>
+    <th colspan="2"><{$adsform.title}></th>
+    </tr>
+	
+    <!-- start of form elements loop -->
+    <{foreach item=element from=$adsform.elements}>
+	
+	<{if $element.name|truncate:6:"" != "_break"}>
+      <{if $element.hidden != true}>
+      <tr>
+        <td class="head"><{$element.caption}></td>
+        <td class="<{cycle values="even,odd"}>"><{$element.body}></td>
+      </tr>
+      <{else}>
+      <{$element.body}>
+      <{/if}>
+	  
+      <{else}>
+    <th colspan="2"><{$element.caption}></th>  
+      <{/if}>
+	  
+    <{/foreach}>
+	
+    <!-- end of form elements loop -->
+	<{$adsform.elements.uid.body}>
+	<{$adsform.elements.display_price.body}>
+	<{$adsform.elements.preview_name.body}>
+	<{$adsform.elements.count_elt.body}>
+    <!-- end of form elements loop -->
+  </table>
+</form>

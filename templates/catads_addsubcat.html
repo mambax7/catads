@@ -1,0 +1,28 @@
+
+<!-- Presentation des rubriques en lignes  -->
+<table border="0">
+  <tr> 
+  <td width=" <{$wcol}>%">
+  <{foreach name = subcat item = scat from = $cat.subcat}>
+	<{if $scat.newcol}><!-- colonne suivante si pas la premiere  -->
+	</td>
+	<{if $scat.newline}><!-- ligne suivante si nb colonnes atteint  -->
+	<tr></tr>
+      <{/if}>
+    <td width=" <{$wcol}>%"> 
+      <{/if}>
+      <{$scat.img}>
+      <b>
+      <{$scat.title}>
+      </b> 
+      	<{$scat.nb}>
+      <{if $scat.new > 0}>
+      	<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" width="23" height="12" alt="" /> 
+      <{/if}>
+      <br />
+
+<{/foreach}>
+</td>
+  </tr>
+</table>
+

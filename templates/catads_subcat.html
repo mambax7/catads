@@ -1,0 +1,65 @@
+<{if $type == 1}>
+<!-- Presentation des rubriques en lignes  -->
+<table border="0">
+        <tr>
+         <td width="<{$wcol}>%">
+             <{foreach name = subcat item = scat from = $cat.subcat}>
+	
+                 <{if $scat.newcol}> <!-- colonne suivante si pas la premiere  -->
+	         </td>
+                      <{if $scat.newline}> <!-- ligne suivante si nb colonnes atteint  -->
+	              <tr></tr>
+                      <{/if}>
+                 <td width=" <{$wcol}>%">
+                 <{/if}>
+        
+        <{$scat.img}>
+
+
+      <b><{if $scat.link}>
+          <a href="<{$xoops_url}>/modules/catads/adslist.php?topic_id=<{$scat.id}>"><{$scat.title}></a>
+	  <{elseif $scat.submit}>
+          <a href="<{$scat.submit}>"><{$scat.title}></a>
+	  <{else}>
+	  <{$scat.title}>
+         <{/if}>
+      </b> 
+
+      	<{$scat.nb}>
+      
+      <{if $scat.new > 0}>
+      <img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+      <{/if}>
+      <br />
+
+<{/foreach}>
+
+</td>
+  </tr>
+</table>
+
+<{else}>
+
+<!-- Presentation des rubriques en colonnes  -->
+
+<!-- sub-cat list on homepage -->
+
+<{foreach name = subcat item = scat from = $cat.subcat}>
+	<div align="left">
+	<{$scat.img}>
+      <b>
+      <{if $scat.link}>
+      	<a href="<{$xoops_url}>/modules/catads/adslist.php?topic_id=<{$scat.id}>"><{$scat.title}></a>
+    <{elseif $scat.submit}>
+    <a href="<{$scat.submit}>"><{$scat.title}></a>
+	<{else}>
+		<{$scat.title}>
+      <{/if}>
+      </b> 
+      	<{$scat.nb}>
+      <{if $scat.new > 0}>
+      	<img src="<{$xoops_url}>/modules/catads/images/icon/new_green.gif" alt="" />
+      <{/if}>
+      <br /></div>
+<{/foreach}>
+<{/if}>
